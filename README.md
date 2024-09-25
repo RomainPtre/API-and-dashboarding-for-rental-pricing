@@ -17,4 +17,4 @@ All the visualisations and calculations will dynamically adapt to the threshold 
 
 ## API
 
-In porgress
+In progress
