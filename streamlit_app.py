@@ -162,13 +162,14 @@ with loss:
     price_day, price_day_adjust, late_per = revenue_loss(pot_loss_per)
     revenue_loss_percentage = (price_day - price_day_adjust) / price_day * 100
     remaining_percentage = 100 - revenue_loss_percentage
-
-    st.markdown(f'The total revenue loss with the feature activated with a threshold of <span style="color: red;"> **{threshold}h** </span> would be of <span style="color: red;"> **{price_day_adjust:,.2f} \$** </span> which corresponds to an absolute loss of <span style="color: red;"> **{price_day-price_day_adjust:,.2f} $** </span> (<span style="color: red;"> **{revenue_loss_percentage:.2f} %** </span>) per day (presumably)', unsafe_allow_html=True)
     
     # pie chart
     revenue_loss_data = {'Category': ['Revenue Loss', 'Remaining Revenue'], 'Percentage': [revenue_loss_percentage, remaining_percentage]}
     pie_revenue_loss = px.pie(revenue_loss_data, names='Category', values='Percentage', title='Revenue Loss', color_discrete_sequence=['lightblue', 'purple'])
     st.plotly_chart(pie_revenue_loss)
+
+    st.markdown(f'The total revenue loss with the feature activated with a threshold of <span style="color: red;"> **{threshold}h** </span> would be of <span style="color: red;"> **{price_day_adjust:,.2f} \$** </span> which corresponds to an absolute loss of <span style="color: red;"> **{price_day-price_day_adjust:,.2f} $** </span> (<span style="color: red;"> **{revenue_loss_percentage:.2f} %** </span>) per day (presumably)', unsafe_allow_html=True)
+
 
 
 with impact:
@@ -177,12 +178,13 @@ with impact:
     impact_percentage = pot_loss_per_tot * 100
     remaining_impact_percentage = 100-impact_percentage
 
-    st.markdown(f'The potential loss with a threshold of <span style="color: red;"> **{threshold}h** </span> impacts <span style="color: red;"> **{impact_percentage:.2f}** % </span> (<span style="color: red;">**{pot_loss_tot}** </span> rentals) of all the recorded rentals (late or not).', unsafe_allow_html=True)
-
     # pie chart
     rental_loss_data = {'Category': ['Rentals Loss', 'Remaining Rentals'], 'Percentage': [impact_percentage, remaining_impact_percentage]}
     pie_rental_loss = px.pie(rental_loss_data, names='Category', values='Percentage', title='Rental Loss', color_discrete_sequence=['lightblue', 'purple'])
     st.plotly_chart(pie_rental_loss)
+
+    st.markdown(f'The potential loss with a threshold of <span style="color: red;"> **{threshold}h** </span> impacts <span style="color: red;"> **{impact_percentage:.2f}** % </span> (<span style="color: red;">**{pot_loss_tot}** </span> rentals) of all the recorded rentals (late or not).', unsafe_allow_html=True)
+
 
 
 ################################### Scope
