@@ -17,4 +17,17 @@ All the visualisations and calculations will dynamically adapt to the threshold 
 
 ## API
 
-In progress
+To deploy locally, run the following command in the terminal (from the api folder):
+
+uvicorn app:app --reload --host 0.0.0.0 --port 4000
+uvicorn app:app --reload --host 127.0.0.1 --port 4000
+
+
+and open 'http://localhost:4000/' in your browser.
+
+To request prediction from the API given user data : 
+
+Invoke-RestMethod -Uri "http://127.0.0.1:4000/predict" `
+                  -Method POST `
+                  -Headers @{ "Content-Type" = "application/json" } `
+                  -Body '{"model_key":"Citroën","mileage":77334, "engine_power":256,"fuel":"diesel","paint_color":"black","car_type":"coupe","private_parking_available":true, "has_gps":false,"has_air_conditioning":true,"automatic_car":false,"has_getaround_connect":false,"has_speed_regulator":true,"winter_tires":false}'
