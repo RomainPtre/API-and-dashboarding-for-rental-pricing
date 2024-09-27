@@ -17,17 +17,27 @@ All the visualisations and calculations will dynamically adapt to the threshold 
 
 ## API
 
+---
+
 To deploy locally, run the following command in the terminal (from the api folder):
 
 ```uvicorn app:app --reload --host 0.0.0.0 --port 4000```
-```uvicorn app:app --reload --host 127.0.0.1 --port 4000```
 
 
 and open 'http://localhost:4000/' in your browser.
 
 To request prediction from the API given user data : 
 
-```Invoke-RestMethod -Uri "http://127.0.0.1:4000/predict" `
-                  -Method POST `
-                  -Headers @{ "Content-Type" = "application/json" } `
-                  -Body '{"model_key":"Citroën","mileage":77334, "engine_power":256,"fuel":"diesel","paint_color":"black","car_type":"coupe","private_parking_available":true, "has_gps":false,"has_air_conditioning":true,"automatic_car":false,"has_getaround_connect":false,"has_speed_regulator":true,"winter_tires":false}'```
+In a bash terminal:
+
+```curl -X POST "http://localhost:4000/predict" \
+-H "Content-Type: application/json" \
+-d '{"model_key":"Renault","mileage":77334,"engine_power":256,"fuel":"diesel","paint_color":"black","car_type":"coupe","private_parking_available":true,"has_gps":false,"has_air_conditioning":true,"automatic_car":false,"has_getaround_connect":false,"has_speed_regulator":true,"winter_tires":false}'
+```
+
+**To fix** Special characters such as 'Citroën' currently not working. Possible to force UTF-8 encoding in the curl command, but this solution is not user friendly. app.py should be fixed accordingly in the futur.
+
+---
+
+To deploy on heroku
+
