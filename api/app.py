@@ -21,7 +21,28 @@ class PredictionFeatures(BaseModel):
     has_speed_regulator: bool
     winter_tires: bool
 
-app = FastAPI()
+
+app = FastAPI(
+    title='The getaround API',
+    description=''' This API allows user to predict rental prices based on car characteristics through the \'/predict\' endpoint through the POST method.
+
+    Here is an example of request through a bash terminal :
+
+    curl -X POST <API URL> \
+    -H "Content-Type: application/json" \
+    -d '{"model_key":"Renault","mileage":77334,"engine_power":256,"fuel":"diesel","paint_color":"black","car_type":"coupe","private_parking_available":true,"has_gps":false,"has_air_conditioning":true,"automatic_car":false,"has_getaround_connect":false,"has_speed_regulator":true,"winter_tires":false}'
+
+    This should return :
+
+    The predicted price is: 190.02305595828443
+
+    ''',
+    openapi_tags={
+        'name': '/predict',
+        'description': 'Use pre-trained ML model (on getaround provided database) to predict rental prices based on car characteristics'
+    }
+)
+
 
 @app.get('/')
 async def root():
@@ -51,7 +72,7 @@ async def predict(input_data: PredictionFeatures, request: Request):
         X_pred = predictor.predict(X)
         print(f"Prediction: {X_pred}")
 
-        return {'The return predicted price is': X_pred[0]}
+        return {'The predicted price is': X_pred[0]}
     
     except Exception as e:
         print(f"Error during processing: {e}")
