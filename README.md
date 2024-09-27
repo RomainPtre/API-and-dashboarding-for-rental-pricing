@@ -15,7 +15,7 @@ All the visualisations and calculations will dynamically adapt to the threshold 
 
 ---
 
-## API
+## 💻 API
 
 ---
 
@@ -42,7 +42,7 @@ curl -X POST "http://localhost:4000/predict" \
 
 ---
 
-Update : Deployed on Heroku
+Deployed on Heroku
 
 https://getaroundapi-fbe121f675a3.herokuapp.com/
 
