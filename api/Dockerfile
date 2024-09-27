@@ -1,17 +1,12 @@
-FROM continuumio/miniconda3
+FROM python:3.12-slim
 
-WORKDIR /home/app
+WORKDIR /app
 
-RUN apt-get update -y 
-RUN apt-get install nano unzip
-RUN apt-get install -y python3.10
-RUN apt install curl -y
+COPY requirements.txt .
+COPY . .
 
-RUN curl -fsSL https://get.deta.dev/cli.sh | sh
+RUN pip install --no-cache-dir -r requirements.txt
 
-COPY requirements.txt /dependencies/requirements.txt
-RUN pip install -r /dependencies/requirements.txt
+EXPOSE 4000
 
-COPY . /home/app
-
-CMD gunicorn main:app  --bind 0.0.0.0:$PORT --worker-class uvicorn.workers.UvicornWorker #
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "4000"]

@@ -42,5 +42,7 @@ curl -X POST "http://localhost:4000/predict" \
 
 ---
 
-To deploy on heroku
+Update : Deployed on Heroku
+
+https://getaroundapi-9f7e98ff8e74.herokuapp.com/
 
