@@ -19,6 +19,8 @@ All the visualisations and calculations will dynamically adapt to the threshold 
 
 ---
 
+---
+
 To deploy locally, run the following command in the terminal (from the api folder):
 
 ```uvicorn app:app --reload --host 0.0.0.0 --port 4000```
