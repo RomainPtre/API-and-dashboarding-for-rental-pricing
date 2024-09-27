@@ -13,6 +13,9 @@ I have created a dashboard that will help the Product Management Team to select 
 
 All the visualisations and calculations will dynamically adapt to the threshold you select using the main slider.
 
+![screen-dashboard](https://github.com/user-attachments/assets/3d12d3c6-0666-49e1-b88b-79d95c217c4e)
+
+
 ---
 
 ## 💻 API
