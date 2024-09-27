@@ -44,5 +44,16 @@ curl -X POST "http://localhost:4000/predict" \
 
 Update : Deployed on Heroku
 
-https://getaroundapi-9f7e98ff8e74.herokuapp.com/
+https://getaroundapi-fbe121f675a3.herokuapp.com/
 
+Example of request in a bash terminal:
+
+```
+curl -X POST "https://getaroundapi-fbe121f675a3.herokuapp.com/predict" \
+-H "Content-Type: application/json" \
+-d '{"model_key":"Renault","mileage":77334,"engine_power":256,"fuel":"diesel","paint_color":"black","car_type":"coupe","private_parking_available":true,"has_gps":false,"has_air_conditioning":true,"automatic_car":false,"has_getaround_connect":false,"has_speed_regulator":true,"winter_tires":false}'
+```
+
+Should return:
+
+```{"The return predicted price is":190.02305595828443}```
