@@ -32,12 +32,25 @@ async def root():
 
 @app.post('/predict', tags=["Predictions"], summary="Predict rental price", 
           description="""Use this endpoint to predict rental prices based on the car's characteristics. 
-          Example request: 
-          ```
-          curl -X POST <API URL> \
-          -H "Content-Type: application/json" \
-          -d '{"model_key":"Renault","mileage":77334,"engine_power":256,"fuel":"diesel","paint_color":"black","car_type":"coupe","private_parking_available":true,"has_gps":false,"has_air_conditioning":true,"automatic_car":false,"has_getaround_connect":false,"has_speed_regulator":true,"winter_tires":false}'
-          ```
+          Example request: \n
+```
+    {
+        "model_key": "Renault",
+        "mileage": 77334,
+        "engine_power": 256,
+        "fuel": "diesel",
+        "paint_color": "black",
+        "car_type": "coupe",
+        "private_parking_available": true,
+        "has_gps": false,
+        "has_air_conditioning": true,
+        "automatic_car": false,
+        "has_getaround_connect": false,
+        "has_speed_regulator": true,
+        "winter_tires": false
+    }
+```\n
+
           This should return the predicted price.""")
 async def predict(input_data: PredictionFeatures, request: Request):
     ''' Return predicted price according to car features'''
@@ -60,7 +73,7 @@ async def predict(input_data: PredictionFeatures, request: Request):
         X_pred = predictor.predict(X)
         print(f"Prediction: {X_pred}")
 
-        return {'The predicted price is': X_pred[0]}
+        return {f'The predicted price is: {X_pred[0]:.2f}$'}
     
     except Exception as e:
         print(f"Error during processing: {e}")
