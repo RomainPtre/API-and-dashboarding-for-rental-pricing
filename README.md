@@ -47,18 +47,18 @@ curl -X POST "http://localhost:4000/predict" \
 
 Deployed on Heroku
 
-https://getaroundapi-67f2c2534922.herokuapp.com/
+https://getaroundapi2-6243ef83cbfe.herokuapp.com/
 
-Please find the API docs here : https://getaroundapi-67f2c2534922.herokuapp.com/docs
+Please find the API docs here : https://getaroundapi-be9b5ac83b33.herokuapp.com/docs
 
-Example of request in a bash terminal:
+Example of curl request in a bash terminal:
 
 ```
-curl -X POST "https://getaroundapi-67f2c2534922.herokuapp.com/predict" \
+curl -X POST "https://getaroundapi-be9b5ac83b33.herokuapp.com/predict" \
 -H "Content-Type: application/json" \
 -d '{"model_key":"Renault","mileage":77334,"engine_power":256,"fuel":"diesel","paint_color":"black","car_type":"coupe","private_parking_available":true,"has_gps":false,"has_air_conditioning":true,"automatic_car":false,"has_getaround_connect":false,"has_speed_regulator":true,"winter_tires":false}'
 ```
 
 Should return:
 
-```{"The return predicted price is":190.02305595828443}```
+```{"The return predicted price is":190.02 $}```
